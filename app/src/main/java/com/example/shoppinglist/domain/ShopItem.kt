@@ -1,8 +1,28 @@
 package com.example.shoppinglist.domain
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity(tableName = "shopItems")
 data class ShopItem(
-    val id: Int,
+
+    @ColumnInfo(name = "name")
     val name: String,
+
+    @ColumnInfo(name = "count")
     val count: Int,
-    val enabled: Boolean
-)
+
+    @ColumnInfo(name = "enable")
+    val enabled: Boolean,
+
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = UNDEFINED_ID
+
+    ){
+    companion object{
+        const val UNDEFINED_ID = -1;
+    }
+}
+
